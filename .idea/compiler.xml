@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="terrainGenerationTest3" target="17" />
+      <module name="terrainGenerationTest3" target="16" />
     </bytecodeTargetLevel>
   </component>
 </project>
