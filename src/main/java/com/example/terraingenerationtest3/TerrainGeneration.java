@@ -17,7 +17,7 @@ public class TerrainGeneration extends Application {
 
         double screenHeight = findScreenHeight();
         double screenWidth = findScreenWidth();
-        Path path = lineGeneration();
+        Path path = lineGen2ndAttempt();
         Group root = new Group(path);
         Scene scene = new Scene(root, screenHeight, screenWidth);
         stage.setScene(scene);
@@ -54,8 +54,29 @@ public class TerrainGeneration extends Application {
         return path;
     }
 
+    private Path lineGen2ndAttempt() {
+        Path path = new Path();
+        path.setStrokeWidth(3);
+        double screenHeight = findScreenHeight();
+        MoveTo moveTo = new MoveTo(0, screenHeight- (screenHeight/3));
+        LineTo line0 = new LineTo(40, screenHeight- (screenHeight/3));
+        path.getElements().add(moveTo);
+        path.getElements().add(line0);
+        int x = 40;
+        for (int i = 0; i < 500 ; i++) {
+            double p = perlinNoiseGeneration();
+            LineTo line1 = new LineTo(x, (screenHeight - (p * screenHeight)));
+            double p2 = perlinNoiseGeneration();
+            LineTo line2 = new LineTo(x, screenHeight - (p2 * screenHeight));
+            path.getElements().addAll(line1, line2);
+            x = x + 100;
+        }
+        return path;
+
+    }
 
 
+//((double) 3 / (double) 4))
    /* private Path firstLine() {
         double screenHeight = findScreenHeight();
         Path path = new Path();
